@@ -34,6 +34,10 @@ public class Semestre {
     
 }
 
+/* Faça um programa que receba como entrada duas notas de varios alunos e mostre: 
+A> Qual a maior média da turma e o nome do aluno com a maior média
+B> Quantos alunos tiveram média  entre 6 e 8 
+C> Qual foi a média da turma */
 
 
 
