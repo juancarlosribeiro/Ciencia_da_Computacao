@@ -55,6 +55,11 @@ public class Telinha extends javax.swing.JFrame {
         jLabel2.setText("Digite a nota 2:");
 
         jTnota1.setColumns(6);
+        jTnota1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTnota1ActionPerformed(evt);
+            }
+        });
 
         jTnota2.setColumns(6);
 
@@ -128,6 +133,10 @@ public class Telinha extends javax.swing.JFrame {
         jTnota1.requestFocus();
         }
     }//GEN-LAST:event_jBcalcularActionPerformed
+
+    private void jTnota1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTnota1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTnota1ActionPerformed
 
     /**
      * @param args the command line arguments

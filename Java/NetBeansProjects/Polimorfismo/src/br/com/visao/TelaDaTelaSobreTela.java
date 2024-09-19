@@ -4,8 +4,13 @@
  */
 package br.com.visao;
 
+import br.com.controle.Divisao;
+import br.com.controle.Media;
+import br.com.controle.Multiplicacao;
 import br.com.controle.OperacaoMatematics;
 import br.com.controle.Soma;
+import br.com.controle.Subtracao;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -39,6 +44,10 @@ public class TelaDaTelaSobreTela extends javax.swing.JFrame {
         jBsomar = new javax.swing.JButton();
         jLresultado = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jBsubtracao = new javax.swing.JButton();
+        jBmult = new javax.swing.JButton();
+        jdivi = new javax.swing.JButton();
+        jBmedia = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,6 +68,35 @@ public class TelaDaTelaSobreTela extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setText("Calculator 3.000");
 
+        jBsubtracao.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jBsubtracao.setText("-");
+        jBsubtracao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBsubtracaoActionPerformed(evt);
+            }
+        });
+
+        jBmult.setText("x");
+        jBmult.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBmultActionPerformed(evt);
+            }
+        });
+
+        jdivi.setText("/");
+        jdivi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jdiviActionPerformed(evt);
+            }
+        });
+
+        jBmedia.setText("Media");
+        jBmedia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBmediaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -68,22 +106,31 @@ public class TelaDaTelaSobreTela extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(47, 47, 47)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
-                        .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTvalor1, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
-                            .addComponent(jTvalor2)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2))
+                                .addGap(31, 31, 31)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTvalor1, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                                    .addComponent(jTvalor2)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jBsomar)
+                                .addGap(18, 18, 18)
+                                .addComponent(jBsubtracao)
+                                .addGap(18, 18, 18)
+                                .addComponent(jBmult)
+                                .addGap(18, 18, 18)
+                                .addComponent(jdivi)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jBmedia))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(59, 59, 59)
                         .addComponent(jLresultado))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(143, 143, 143)
-                        .addComponent(jBsomar))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(137, 137, 137)
                         .addComponent(jLabel3)))
-                .addContainerGap(136, Short.MAX_VALUE))
+                .addContainerGap(115, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,9 +144,14 @@ public class TelaDaTelaSobreTela extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jTvalor2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addComponent(jBsomar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBsomar)
+                    .addComponent(jBsubtracao)
+                    .addComponent(jBmult)
+                    .addComponent(jdivi)
+                    .addComponent(jBmedia))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                 .addComponent(jLresultado)
                 .addGap(70, 70, 70))
         );
@@ -109,11 +161,112 @@ public class TelaDaTelaSobreTela extends javax.swing.JFrame {
 
     private void jBsomarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsomarActionPerformed
         // TODO add your handling code here:
+         if(jTvalor1.getText().equals("")){
+            JOptionPane.showMessageDialog(null," Campo Obrigatório!");
+            jTvalor1.requestFocus();
+        }
+        else if (jTvalor2.getText().equals("")){
+            JOptionPane.showMessageDialog(null," Campo Obrigatório!");
+            jTvalor2.requestFocus();
+        }else{
         double pvalor1=Double.valueOf(jTvalor1.getText());
         double pvalor2 =Double.valueOf(jTvalor2.getText());
-
         jLresultado.setText("Soma: "+calcule(new Soma(), pvalor1,pvalor2));
+        jTvalor1.setText("");
+        jTvalor2.setText("");
+        jTvalor1.requestFocus();
+        
+        
+        }
     }//GEN-LAST:event_jBsomarActionPerformed
+
+    private void jBsubtracaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsubtracaoActionPerformed
+        // TODO add your handling code here:
+         if(jTvalor1.getText().equals("")){
+            JOptionPane.showMessageDialog(null," Campo Obrigatório!");
+            jTvalor1.requestFocus();
+        }
+        else if (jTvalor2.getText().equals("")){
+            JOptionPane.showMessageDialog(null," Campo Obrigatório!");
+            jTvalor2.requestFocus();
+        }else{
+        double pvalor1=Double.valueOf(jTvalor1.getText());
+        double pvalor2 =Double.valueOf(jTvalor2.getText());
+        jLresultado.setText("Subtração: "+calcule(new Subtracao(), pvalor1,pvalor2));
+        jTvalor1.setText("");
+        jTvalor2.setText("");
+        jTvalor1.requestFocus();
+        
+        
+        }
+    
+        
+    }//GEN-LAST:event_jBsubtracaoActionPerformed
+
+    private void jBmultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBmultActionPerformed
+        // TODO add your handling code here:
+         if(jTvalor1.getText().equals("")){
+            JOptionPane.showMessageDialog(null," Campo Obrigatório!");
+            jTvalor1.requestFocus();
+        }
+        else if (jTvalor2.getText().equals("")){
+            JOptionPane.showMessageDialog(null," Campo Obrigatório!");
+            jTvalor2.requestFocus();
+        }else{
+        double pvalor1=Double.valueOf(jTvalor1.getText());
+        double pvalor2 =Double.valueOf(jTvalor2.getText());
+        jLresultado.setText("Multiplicação: "+calcule(new Multiplicacao(), pvalor1,pvalor2));
+        jTvalor1.setText("");
+        jTvalor2.setText("");
+        jTvalor1.requestFocus();
+        
+        
+        }
+      
+    }//GEN-LAST:event_jBmultActionPerformed
+
+    private void jdiviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jdiviActionPerformed
+        // TODO add your handling code here:
+         if(jTvalor1.getText().equals("")){
+            JOptionPane.showMessageDialog(null," Campo Obrigatório!");
+            jTvalor1.requestFocus();
+        }
+        else if (jTvalor2.getText().equals("")){
+            JOptionPane.showMessageDialog(null," Campo Obrigatório!");
+            jTvalor2.requestFocus();
+        }else{
+        double pvalor1=Double.valueOf(jTvalor1.getText());
+        double pvalor2 =Double.valueOf(jTvalor2.getText());
+        jLresultado.setText("Divisão: "+calcule(new Divisao(), pvalor1,pvalor2));
+        jTvalor1.setText("");
+        jTvalor2.setText("");
+        jTvalor1.requestFocus();
+        
+        
+        }
+     
+    }//GEN-LAST:event_jdiviActionPerformed
+
+    private void jBmediaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBmediaActionPerformed
+        // TODO add your handling code here:
+         if(jTvalor1.getText().equals("")){
+            JOptionPane.showMessageDialog(null," Campo Obrigatório!");
+            jTvalor1.requestFocus();
+        }
+        else if (jTvalor2.getText().equals("")){
+            JOptionPane.showMessageDialog(null," Campo Obrigatório!");
+            jTvalor2.requestFocus();
+        }else{
+        double pvalor1=Double.valueOf(jTvalor1.getText());
+        double pvalor2 =Double.valueOf(jTvalor2.getText());
+        jLresultado.setText("Media: "+calcule(new Media(), pvalor1,pvalor2));
+        jTvalor1.setText("");
+        jTvalor2.setText("");
+        jTvalor1.requestFocus();
+        
+        }
+    
+    }//GEN-LAST:event_jBmediaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -151,12 +304,16 @@ public class TelaDaTelaSobreTela extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBmedia;
+    private javax.swing.JButton jBmult;
     private javax.swing.JButton jBsomar;
+    private javax.swing.JButton jBsubtracao;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLresultado;
     private javax.swing.JTextField jTvalor1;
     private javax.swing.JTextField jTvalor2;
+    private javax.swing.JButton jdivi;
     // End of variables declaration//GEN-END:variables
 }
