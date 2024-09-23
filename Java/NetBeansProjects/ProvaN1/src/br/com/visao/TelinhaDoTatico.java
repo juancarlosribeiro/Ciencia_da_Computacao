@@ -107,12 +107,13 @@ public class TelinhaDoTatico extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+       ComprasControle c = new ComprasControle();
 
     private void jApertaaquiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jApertaaquiActionPerformed
         // TODO add your handling code here:
-        ComprasControle c = new ComprasControle();
-        c.setSomaDiabo(Double.valueOf(jInsereAqui.getText()));
-        jResultadoSoma.setText("A soma dos produtos é: "+ c.addComprinhas());
+        c.addComprinhas(Double.valueOf(jInsereAqui.getText()));
+        jResultadoSoma.setText("A soma dos produtos é: "+ c.getSomaDiabo());
+        jQuantasde500.setText(""+c.getEntreNos());
     }//GEN-LAST:event_jApertaaquiActionPerformed
 
     private void jInsereAquiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jInsereAquiActionPerformed
