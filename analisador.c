@@ -3,6 +3,7 @@
 #include <string.h>
 #include <stdbool.h>
 
+
 // Definição de tamanho máximo para identificadores e número de linhas/colunas
 #define TAMANHO_BUFFER 100
 #define TAMANHO_TABELA_SIMBOLOS 100
@@ -15,13 +16,13 @@ typedef struct {
     int coluna;
 } Token;
 
-// Estrutura da tabela de símbolos
+// Estrutura da tabela de simbolos
 typedef struct {
     char simbolos[TAMANHO_TABELA_SIMBOLOS][TAMANHO_BUFFER];
     int tamanho;
 } TabelaSimbolos;
 
-// Declaração global da tabela de símbolos
+// Declaração global da tabela de simbolos
 TabelaSimbolos tabelaSimbolos;
 
 // Prototipos de funções
@@ -63,7 +64,7 @@ void analisador_lexico(char *codigo_fonte) {
             // Identifica palavras reservadas ou identificadores
             processa_identificador(&ptr, &linha, &coluna);
         } else {
-            // Verifica operadores e símbolos
+            // Verifica operadores e simbolos
             processa_operadores_e_simbolos(&ptr, &linha, &coluna);
         }
     }
@@ -126,7 +127,7 @@ void processa_identificador(char **ptr, int *linha, int *coluna) {
     }
 }
 
-// Função para processar operadores e símbolos
+// Função para processar operadores simbolos
 void processa_operadores_e_simbolos(char **ptr, int *linha, int *coluna) {
     switch (**ptr) {
         case '+':
@@ -157,7 +158,7 @@ void processa_operadores_e_simbolos(char **ptr, int *linha, int *coluna) {
         case '.':
             printf("Token: SMB_PONTO, Linha: %d, Coluna: %d\n", *linha, *coluna);
             break;
-        // Adicione outros operadores e símbolos aqui
+        // Adicione outros operadores e simbolos aqui
         default:
             reporta_erro(*linha, *coluna, "Caractere desconhecido");
             break;
@@ -168,15 +169,15 @@ void processa_operadores_e_simbolos(char **ptr, int *linha, int *coluna) {
 
 
 
-// Função para inserir na tabela de símbolos
+// Função para inserir na tabela de simbolos
 void insere_na_tabela_simbolos(char *lexema) {
     if (!esta_na_tabela_simbolos(lexema)) {
         strcpy(tabelaSimbolos.simbolos[tabelaSimbolos.tamanho++], lexema);
-        printf("Símbolo inserido: %s\n", lexema);
+        printf("Simbolo inserido: %s\n", lexema);
     }
 }
 
-// Função para verificar se um identificador já está na tabela de símbolos
+// Função para verificar se um identificador já está na tabela de simbolos
 bool esta_na_tabela_simbolos(char *lexema) {
     for (int i = 0; i < tabelaSimbolos.tamanho; i++) {
         if (strcmp(tabelaSimbolos.simbolos[i], lexema) == 0) {
@@ -188,11 +189,14 @@ bool esta_na_tabela_simbolos(char *lexema) {
 
 // Função para reportar erros
 void reporta_erro(int linha, int coluna, char *mensagem) {
-    printf("Erro léxico: %s na linha %d, coluna %d\n", mensagem, linha, coluna);
+    printf("Erro lexico: %s na linha %d, coluna %d\n", mensagem, linha, coluna);
 }
 
 // Função principal
 int main() {
+
+
+
     // Exemplo de código-fonte em MicroPascal
     char codigo_fonte[] =
         "program Exemplo;\n"
@@ -201,7 +205,7 @@ int main() {
         "x := 10;\n"
         "end.\n";
 
-    // Inicializa a tabela de símbolos
+    // Inicializa a tabela de simbolos
     tabelaSimbolos.tamanho = 0;
 
     // Executa o analisador léxico
