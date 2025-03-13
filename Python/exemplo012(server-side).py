@@ -25,13 +25,13 @@ def iniciar_servidor():
                     if not data:
                         break
 
-                if data.decode().strip().lower() == "data e hora":
-                    agora = datetime.now().strftime("%Y-%M-%d %H:%M:%S ")
-                    resposta = f"Data e hora atual: {agora}"
-                    conn.sendall(resposta.encode())
+                    if data.decode().strip().lower() == "data e hora":
+                        agora = datetime.now().strftime("%Y-%M-%d %H:%M:%S ")
+                        resposta = f"Data e hora atual: {agora}"
+                        conn.sendall(resposta.encode())
 
-                else:
-                    conn.sendall("Mensagem inválida menor")    
+                    else:
+                        conn.sendall("Mensagem inválida menor")    
 
 if __name__ == "__main__":
     iniciar_servidor()
