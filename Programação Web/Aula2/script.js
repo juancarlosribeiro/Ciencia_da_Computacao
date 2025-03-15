@@ -14,3 +14,29 @@ console.log(cabecalho.textContent);
 
 var cabecalho = document.querySelectorAll(".cabecalho");
 console.log(cabecalho.textContent);
+
+var botao1 = document.getElementById("botao1");
+botao1.onclick = function(){
+
+    alert("Clicaste vagabundo");
+    botao1.textContent = "Ciclonado";
+
+}
+
+var botadao2 = document.getElementById("botadao2");
+
+botadao2.addEventListener("mouseover",function(){
+    botadao2.style.background= "blue";
+})
+
+botadao2.addEventListener("mouseout",function(){
+    botadao2.style.background= "";
+
+
+})
+
+botadao2.addEventListener("click", function(){
+    alert("Clico carai");
+
+
+})
