@@ -40,3 +40,4 @@ function calculaovalor(precoComburente, litros){
 }
 
 document.getElementById("litros").addEventListener("input", atualizarValor);
+document.getElementById("combustivel").addEventListener("change", atualizarValor);
