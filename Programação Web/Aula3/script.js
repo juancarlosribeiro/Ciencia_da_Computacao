@@ -1,4 +1,3 @@
-//funções
 
 const Gasolina = 5.79;
 const Etanol = 4.29;
